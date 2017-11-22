@@ -133,7 +133,8 @@ export const debtManagement = {
 export const accountViewLanguage = {
   home: 'Home',
   friends: 'Friends',
-  activity: 'Activity'
+  activity: 'Activity',
+  pending: 'Pending'
 }
 
 export const pendingTransactionsLanguage = {

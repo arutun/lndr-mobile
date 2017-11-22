@@ -7,7 +7,6 @@ import { Text, View } from 'react-native'
 import Tabs, { Tab } from 'ui/components/tabs'
 
 import PendingView from './pending'
-import RecentActivityView from './recent-activity'
 
 interface Props {
   engine: Engine
@@ -29,13 +28,15 @@ export default class ActivityView extends Component<Props, State> {
   render() {
     const { engine } = this.props
 
-    return <Tabs alternate>
+    return <PendingView engine={engine} ref={pending => this.pending = pending} />
+
+    /*<Tabs alternate>
       <Tab reference='recent' text='Recent' onRefresh={() => this.recent.refresh()}>
         <RecentActivityView engine={engine} ref={recent => this.recent = recent} />
       </Tab>
       <Tab reference='pending' text='Pending' onRefresh={() => this.pending.refresh()}>
         <PendingView engine={engine} ref={pending => this.pending = pending} />
       </Tab>
-    </Tabs>
+    </Tabs>*/
   }
 }

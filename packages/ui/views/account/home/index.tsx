@@ -12,6 +12,8 @@ import Popup, { closePopup } from 'ui/components/popup'
 import Section from 'ui/components/section'
 import BalanceRow from 'ui/components/balance-row'
 
+import RecentActivityView from './recent-activity'
+
 import AddDebt from 'ui/dialogs/add-debt'
 import MyAccount from 'ui/dialogs/my-account'
 
@@ -48,6 +50,8 @@ interface State {
 }
 
 export default class HomeView extends Component<Props, State> {
+  recent: any
+
   constructor() {
     super()
     this.state = {
@@ -178,6 +182,7 @@ export default class HomeView extends Component<Props, State> {
   }
 
   render() {
+    const { engine } = this.props
     const { accountInformation, balancesLoaded, balances } = this.state
 
     return <View>
@@ -201,6 +206,9 @@ export default class HomeView extends Component<Props, State> {
             />
           )
         )}
+      </Section>
+      <Section text='Recent' contentContainerStyle={style.list}>
+        <RecentActivityView engine={engine} ref={recent => this.recent = recent} />
       </Section>
     </View>
   }

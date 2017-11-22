@@ -63,7 +63,7 @@ export default class AccountView extends Component<Props> {
         <Tab reference='friends' text={accountViewLanguage.friends} onRefresh={() => this.friends.refresh()}>
           <FriendsView engine={engine} ref={friends => this.friends = friends} />
         </Tab>
-        <Tab noscroll reference='activity' text={accountViewLanguage.activity} badge={this.getPendingBadge()}>
+        <Tab noscroll reference='pending' text={accountViewLanguage.pending} badge={this.getPendingBadge()}>
           <ActivityView engine={engine} />
         </Tab>
       </Tabs>
