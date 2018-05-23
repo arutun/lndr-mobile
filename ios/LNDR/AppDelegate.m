@@ -48,6 +48,7 @@
   [self.window makeKeyAndVisible];
   
   [SplashScreen show];
+  
   return YES;
 }
 
