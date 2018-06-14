@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
-import { Text, TextInput, View, Dimensions, ScrollView, Linking, Modal,
-  TouchableHighlight, Image, KeyboardAvoidingView, Platform } from 'react-native'
+import { Text, TextInput, View, Dimensions, ScrollView, Linking, Modal, Switch,
+  TouchableHighlight, Image, KeyboardAvoidingView, Platform, NativeModules } from 'react-native'
 
 import ImagePicker from 'react-native-image-picker'
 
@@ -20,7 +20,7 @@ import { currencySymbols, transferLimits  } from 'lndr/currencies'
 
 import { getAccountInformation, updateNickname, updateEmail, logoutAccount, toggleNotifications,
   setEthBalance, updateLockTimeout, updatePin, getProfilePic, setProfilePic, takenNick, takenEmail,
-  copyToClipboard, validatePin, setPrimaryCurrency } from 'actions'
+  copyToClipboard, validatePin, setPrimaryCurrency, getPayPal, updatePayPal } from 'actions'
 import { getUser, getStore, getAllUcacCurrencies, getPrimaryCurrency } from 'reducers/app'
 import { getResetAction } from 'reducers/nav'
 import { connect } from 'react-redux'
@@ -237,6 +237,16 @@ class MyAccount extends Component<Props, State> {
     }
   }
 
+  async setPayPalConnected(bConnected) {
+      if (bConnected) {
+        NativeModules.PayPalManager.initPayPal();
+        NativeModules.PayPalManager.connectPayPal();
+        // TODO: send response to server
+      } else {
+        // TODO: tell server to delete user's PayPal info
+      }
+  }
+
   logout() {
     this.props.navigation.dispatch( getResetAction({ routeName: 'Dashboard' }) )
     this.props.logoutAccount()
@@ -288,7 +298,26 @@ class MyAccount extends Component<Props, State> {
         <Button round onPress={() => this.props.navigation.navigate('RemoveAccount')} text={removeAccount} />
       </View>),
       (<View style={style.spaceHorizontalL}>
-        <Button round onPress={() =>  Linking.openURL(`https://etherscan.io/address/${user.address}`)} text={accountManagement.viewEtherscan} />
+        <Button round onPress={() => Linking.openURL(`https://etherscan.io/address/${user.address}`)} text={accountManagement.viewEtherscan} />
+      </View>),
+      (<View style={[style.spaceHorizontalL, general.flexRow]}>
+        <Image source={require('images/PayPalLogo.png')} />
+{/* TODO: show a button when not linked, a Switch when linked*/}
+        <Switch onValueChanged={(newValue) => this.setPayPalConnected(newValue)} />
+
+        <TouchableHighlight
+          underlayColor='#fff'
+          activeOpacity={0.5}
+          onPress={() => this.setPayPalConnected(newValue)}
+          style={}
+        >
+          <View style={}>
+            <Image source={require('images/PayPalIcon.png')} />
+            <Text style={[style.text, style.spaceTopL, style.center]}>Connect PayPal</Text>
+{/*            {showText(text, alternate, blackText, large, small, fat)} */}
+          </View>
+        </TouchableHighlight>
+{/*<Button black onPress={() => this.setPayPalConnected(newValue)} text="Connect PayPal" icon={require('images/PayPalIcon.png')}/>*/}
       </View>),
       (<View style={style.spaceHorizontalL}>
         <Button black onPress={() => this.setState({shouldPickCurrency: true})} text={currency} />

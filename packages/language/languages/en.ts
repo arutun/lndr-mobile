@@ -160,6 +160,7 @@ export default {
       `BCPT Balance`,
       `Remove Account`,
       `ETH Transaction History`,
+      `Receive PayPal Payments`,
       `Change Primary Currency`,
       `Change PIN`,
       `Change Nickname`,
