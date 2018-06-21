@@ -157,7 +157,7 @@ export const updatePayPal = (payPal: string) => {
     const { address, privateKeyBuffer } = getUser(getState())()
 //    const { "email": payPal } = payPal
     try {
-      await creditProtocol.setPayPal(address, paypal, privateKeyBuffer)
+      await creditProtocol.setPayPal(address, payPal, privateKeyBuffer)
       dispatch(displaySuccess(accountManagement.setPayPal.success))
       dispatch(getAccountInformation())
     } catch (error) {
