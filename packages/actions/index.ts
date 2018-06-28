@@ -449,7 +449,7 @@ export const getPending = () => {
     const pendingSettlements = filterMultiTransactions(user.address, rawPendingSettlements.unilateralSettlements.map(jsonToPendingUnilateral), getState())
     const bilateralSettlements = filterMultiTransactions(user.address, rawPendingSettlements.bilateralSettlements.map(jsonToPendingBilateral), getState())
     settleBilateral(user, bilateralSettlements, dispatch, getState)
-
+    
     const rawPendingFriends = await creditProtocol.getFriendRequests(user.address)
     const pendingFriends = rawPendingFriends.map(jsonToPendingFriend)
 
