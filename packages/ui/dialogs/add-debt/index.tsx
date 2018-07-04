@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import { View, ScrollView, Text, TextInput, TouchableHighlight, Image, Platform, Modal, Keyboard, KeyboardAvoidingView } from 'react-native'
+import { View, ScrollView, Text, TextInput, TouchableHighlight, Platform, Modal, Keyboard, KeyboardAvoidingView } from 'react-native'
 import { getResetAction } from 'reducers/nav'
 
 import Friend from 'lndr/friend'
@@ -24,7 +24,7 @@ import language from 'language'
 const { debtManagement, noFriends, submit, nickname } = language
 
 import { getStore, pendingTransactions, recentTransactions, getAllUcacCurrencies, hasPendingTransaction, getPrimaryCurrency } from 'reducers/app'
-import { addDebt, getFriends, getRecentTransactions, hasPendingMessage } from 'actions'
+import { addDebt, getFriends, hasPendingMessage } from 'actions'
 import { connect } from 'react-redux'
 
 const loadingFriends = new LoadingContext()
