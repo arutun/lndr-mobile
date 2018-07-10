@@ -281,6 +281,7 @@ export default {
       }
     },
     eth: `Betala genom ETH`,
+    paypal: `Betala genom PayPal`,
     nonPayment: `Registrera betalning`,
   },
 

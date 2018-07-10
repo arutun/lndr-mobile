@@ -16,8 +16,6 @@ import SpinningPicker from 'ui/components/spinning-picker'
 
 import { formatNick, formatLockTimeout, formatEmail, emailFormatIncorrect } from 'lndr/format'
 import { defaultUpdateAccountData, UpdateAccountData, UserData } from 'lndr/user'
-import { getBcptBalance } from 'lndr/bcpt-utils'
-import { currencySymbols, transferLimits  } from 'lndr/currencies'
 
 import { getAccountInformation, updateNickname, updateEmail, logoutAccount, toggleNotifications,
   setEthBalance, updateLockTimeout, updatePin, getProfilePic, setProfilePic, takenNick, takenEmail,

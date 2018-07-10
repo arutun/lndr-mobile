@@ -281,6 +281,7 @@ export default {
       }
     },
     eth: `Eth kullanarak ödeşin`,
+    paypal: `PayPal kullanarak ödeşin`,
     nonPayment: `Bir ödeme kaydı oluşturun`,
   },
 

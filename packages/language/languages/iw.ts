@@ -282,6 +282,7 @@ export default {
       }
     },
     eth: `החזרה בעזרת ETH`,
+    paypal: `החזרה בעזרת PayPal`,
     nonPayment: `לרשום הסדר`,
   },
 

@@ -282,6 +282,7 @@ export default {
       }
     },
     eth: `Διακανονισμός Με ETH`,
+    paypal: `Διακανονισμός Με PayPal`,
     nonPayment: `Καταγράψτε έναν Διακανονισμό`,
   },
 

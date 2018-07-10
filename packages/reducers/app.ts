@@ -194,7 +194,7 @@ export const calculateUcacBalances = (state) => (friendAddress: string) : Object
 
 export const getPrimaryCurrency = (state) : string => state.store.primaryCurrency
 
-export const getFriendList = (state) => () : object[] => state.store.friends
+export const getFriendList = (state) => () : Friend[] => state.store.friends
 
 export const getPendingFromFriend = (state) => (nick: string) => {
   const friend = state.store.friends.find(fr => fr.nickname === nick)
@@ -211,3 +211,7 @@ export const getPendingFromFriend = (state) => (nick: string) => {
 export const hasStoredUser = (state) => () : boolean => state.store.hasStoredUser
 
 export const getChannelID = (state) : string => state.store.channelID
+
+export const getFriendFromNick = (state) => (nick: string) : Friend | undefined => getFriendList(state)().find( friend => friend.nickname === nick)
+
+export const getFriendFromAddress = (state) => (address: string) : Friend | undefined => getFriendList(state)().find( friend => friend.address === address)
