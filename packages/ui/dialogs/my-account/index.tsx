@@ -317,6 +317,7 @@ class MyAccount extends Component<Props, State> {
       <View style={[style.spaceTopS, style.spaceBottomS, style.spaceHorizontalL]}>
         <Loading context={loadingPayPal} />
         <Button zicon="paypal" round text={payPalLanguage.connectPayPal} onPress={() => this.connectPayPal()} />
+{/*        <Button icon="md-trash" round onPress={() => this.disconnectPayPal()} /> */}
       </View>)
   }
 
