@@ -16,7 +16,7 @@ import style from 'theme/confirmation'
 import formStyle from 'theme/form'
 
 import languageText, { language } from 'language'
-const { confirmation, copy } = languageText
+const { confirmation, copy, debtManagement } = languageText
 
 interface Props {
   navigation: any
@@ -53,6 +53,11 @@ class ConfirmationScreen extends Component<Props, State> {
 
   goActivity() {
     this.props.navigation.dispatch( getResetAction({ routeName: 'Dashboard', params: { to: 'activity' } }) )
+  }
+
+  goSettle() {
+    // this.props.navigation.dispatch( getResetAction({ routeName: 'Dashboard', params: { to: 'settlement' } }) )
+    this.props.navigation.navigate('Settlement', { friend: this.props.navigation.state.params.friend })
   }
 
   displayMessage() {
@@ -125,12 +130,15 @@ class ConfirmationScreen extends Component<Props, State> {
           {this.getConfirmationImage(type)}
           {this.displayMessage()}
           {type === 'ethSent' || type === 'erc20Sent' || type === 'confirmFriend' || type === 'rejectFriend' || type === 'kycSuccess' ? <View style={{marginBottom: 20}}/> :
-          <TouchableHighlight onPress={() => this.goActivity()}>
-            <Text style={[style.text, style.spacing]}>
-              <Text>{confirmation.status}</Text>
-              <Text style={[style.text, style.link]}>{confirmation.activity}</Text>
-            </Text>
-          </TouchableHighlight>}
+          <View>
+            {type === 'confirm' && <Button small round onPress={() => this.goSettle()} text={debtManagement.settleUpLower} />}
+            <TouchableHighlight onPress={() => this.goActivity()}>
+              <Text style={[style.text, style.spacing]}>
+                <Text>{confirmation.status}</Text>
+                <Text style={[style.text, style.link]}>{confirmation.activity}</Text>
+              </Text>
+            </TouchableHighlight>
+          </View>}
           <Button fat wide round onPress={() => this.goHome()} text={confirmation.done} />
         </View>
       </ScrollView>
